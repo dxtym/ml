@@ -1,4 +1,4 @@
 run:
-	PYTHONPATH=. uv run streamlit run app/main.py
+	cd app && PYTHONPATH=. uv run streamlit run main.py
 
 .PHONY: run

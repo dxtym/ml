@@ -1,18 +1,24 @@
+
+from pathlib import Path
+
 import joblib
 import streamlit as st
-
-from app.models.feature import Feature
-from app.ui.checkbox import checkboxes
-from app.ui.number import numbers
-from app.ui.radio import radios
-from app.utils.pipeline import preprocess
+from models import Feature
+from ui import checkboxes, numbers, radios
+from utils import preprocess
 
 
 def main() -> None:
     st.title("Machine Learning Coursework")
     st.info("ID: 19248")
 
-    model = joblib.load("model/model.pkl")
+    path = Path(__file__).resolve()
+    model_path = path.parent.parent / "model" / "model.pkl"
+
+    if model_path.exists():
+        model = joblib.load(model_path)
+    else:
+        raise FileNotFoundError(f"Model not found at {model_path}")
 
     nums = numbers()
     rads = radios()
@@ -24,12 +30,17 @@ def main() -> None:
         **checks
     )
 
-    if st.button("Predict"):
+    st.divider()
+    btn = st.button("Predict")
+
+    if btn:
         preprocessed_feature = preprocess(feature)
-        print(preprocessed_feature)
         prediction = model.predict([preprocessed_feature])
 
-        st.success(f"Prediction: {prediction[0]}")
+        if all(prediction):
+            st.success("Survival likely.")
+        else:
+            st.warning("Risk of death.")
 
 
 if __name__ == "__main__":

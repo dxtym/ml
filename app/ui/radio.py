@@ -2,7 +2,7 @@ from typing import Any, Dict
 
 import streamlit as st
 
-from app.models.entity import FEMALE, MALE
+from models import FEMALE, MALE
 
 
 def radios() -> Dict[str, Any]:
