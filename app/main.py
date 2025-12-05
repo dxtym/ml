@@ -1,4 +1,4 @@
-
+import time
 from pathlib import Path
 
 import joblib
@@ -9,7 +9,7 @@ from utils import preprocess
 
 
 def main() -> None:
-    st.title("Machine Learning Coursework")
+    st.title("Hepatitis Classifier")
     st.info("ID: 19248")
 
     path = Path(__file__).resolve()
@@ -35,13 +35,14 @@ def main() -> None:
 
     if btn:
         preprocessed_feature = preprocess(feature)
-        with st.spinner("Please wait..."):
+        with st.status("Please wait...") as status:
+            time.sleep(3)
             prediction = model.predict([preprocessed_feature])
-
-        if all(prediction):
-            st.success("Survival likely.")
-        else:
-            st.warning("Risk of death.")
+            if all(prediction):
+                st.success("Survival likely. Keep up the good health!")
+            else:
+                st.warning("Risk of death. Please consult a medical professional.")
+            status.update(label="Done!", state="complete", expanded=True)
 
 
 if __name__ == "__main__":
