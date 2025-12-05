@@ -10,12 +10,15 @@ Source: https://www.openml.org/search?type=data&sort=runs&status=active&id=55
 
 1. Clone the repository:
 ```bash
-git clone git@github.com:dxtym/ml.git && cd ml
+git clone git@github.com:dxtym/ml.git 
+cd ml
 ```
 
 2. Set up virtual environment:
 ```bash
-uv install && source .venv/bin/activate
+pip install uv
+uv venv
+source .venv/bin/activate
 ```
 
 3. Run the app locally:
