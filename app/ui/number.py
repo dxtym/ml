@@ -4,12 +4,12 @@ import streamlit as st
 
 
 def numbers() -> Dict[str, Any]:
-    age = st.number_input("Age", min_value=1, max_value=100, value=30)
-    bilirubin = st.slider("Bilirubin", min_value=0.0, value=1.0)
-    alk_phosphate = st.slider("Alk Phosphate", min_value=0.0, value=100.0)
-    sgot = st.slider("SGOT", min_value=0.0, value=30.0)
-    albumin = st.slider("Albumin", min_value=0.0, value=3.5)
-    protime = st.number_input("Protime", min_value=0.0, value=12.0)
+    age = st.number_input("Age (years)", min_value=1, max_value=100, value=30)
+    alk_phosphate = st.number_input("Alkaline Phosphate (IU/L)", min_value=30, max_value=250, value=100)
+    sgot = st.number_input("SGOT (IU/L)", min_value=5, max_value=500, value=100)
+    protime = st.number_input("Prothrombin Time (seconds)", min_value=5, max_value=100, value=50)
+    bilirubin = st.slider("Bilirubin (mg/dL)", min_value=0.1, max_value=5.0, value=2.5)
+    albumin = st.slider("Albumin (g/dL)", min_value=2.0, max_value=6.0, value=4.0)
 
     return {
         "age": age,

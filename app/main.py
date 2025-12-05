@@ -35,7 +35,8 @@ def main() -> None:
 
     if btn:
         preprocessed_feature = preprocess(feature)
-        prediction = model.predict([preprocessed_feature])
+        with st.spinner("Please wait..."):
+            prediction = model.predict([preprocessed_feature])
 
         if all(prediction):
             st.success("Survival likely.")

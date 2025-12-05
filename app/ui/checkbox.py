@@ -4,11 +4,11 @@ import streamlit as st
 
 
 def checkboxes() -> Dict[str, Any]:
-    st.markdown('<small>Check medications:</small>', unsafe_allow_html=True)
+    st.markdown('<small>Medications:</small>', unsafe_allow_html=True)
     steroid = st.checkbox("Steroid")
     antivirals = st.checkbox("Antivirals")
 
-    st.markdown('<small>Check symptoms:</small>', unsafe_allow_html=True)
+    st.markdown('<small>Symptoms:</small>', unsafe_allow_html=True)
     fatigue = st.checkbox("Fatigue")
     malaise = st.checkbox("Malaise")
     anorexia = st.checkbox("Anorexia")
